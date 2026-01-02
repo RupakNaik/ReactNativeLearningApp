@@ -5,9 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import type { RootStackParamList } from '../../navigation/types';
 
-import ScreenLayout from '../../presentationals/organisms/ScreenLayout';
-import AppText from '../../presentationals/atoms/AppText';
-import AppPressable from '../../presentationals/atoms/AppPressable';
+import DetailsTemplate from '../../templates/DetailsTemplate';
 import { styles } from './styles';
 
 type Nav = NativeStackNavigationProp<RootStackParamList, "Details">;
@@ -19,18 +17,14 @@ export interface DetailsScreenProps extends ViewProps {
 
 const DetailsScreen: React.FC<DetailsScreenProps> = ({ children, style, ...rest }) => {
     const navigation = useNavigation<Nav>();
-
+    const onBack = () => navigation.goBack();
     return (
-        <ScreenLayout title="Details Screen" style={[styles.default, style]} {...rest}>
-            <AppText style={{ marginBottom: 12 }}>This is the details screen.</AppText>
-            <AppPressable
-                onPress={() => { navigation.goBack() }}
-                style={styles.button}
-                accessibilityLabel="Go back to previous screen">
-                <AppText style={styles.buttonLabel}>Go Back</AppText>
-            </AppPressable>
+        <DetailsTemplate
+            style={[styles.default, style]}
+            onBack={onBack}
+            {...rest}>
             {children}
-        </ScreenLayout>
+        </DetailsTemplate>
     )
 }
 export default DetailsScreen;

@@ -1,19 +1,20 @@
 import { StyleSheet } from "react-native";
+import { colors, typography, spacing } from "../../../theme";
 
 export const styles = StyleSheet.create({
     default: {
-        backgroundColor: "#abcdef",
+        backgroundColor: colors.background,
         justifyContent: "center",
         alignItems: "center",
         flexDirection: "row",
-        paddingHorizontal: 12,
+        paddingHorizontal: spacing.md,
         height: 56, // gives the header a consistent height
 
     },
     title: {
-        fontSize: 18,
-        fontWeight: "600",
-        color: "#000",
+        fontSize: typography.fontSizes.lg,
+        fontWeight: typography.fontWeight.semiBold,
+        color: colors.textPrimary,
     },
 }
 )
