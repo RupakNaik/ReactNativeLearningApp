@@ -1,9 +1,11 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from "react";
 import { View, ViewProps, ViewStyle, StyleProp } from "react-native";
+
 import { styles } from "./styles";
 import AppText from "../../atoms/AppText";
-import { AlignmentType } from "../../types";
+import IconButton from "../IconButton";
+import { AlignmentType, IconName } from "../../types";
 
 export interface HeaderProps extends ViewProps {
     /** The primary text to show in the header */
@@ -14,9 +16,11 @@ export interface HeaderProps extends ViewProps {
     style?: StyleProp<ViewStyle>;
     /** Optional alignment */
     align?: AlignmentType;
+    rightAction?: () => void;
+    rightActionIcon?: IconName;
 }
 
-const Header: React.FC<HeaderProps> = ({ title, align, children, style, ...rest }) => {
+const Header: React.FC<HeaderProps> = ({ title, align, children, rightAction, rightActionIcon, style, ...rest }) => {
     const alignment = align ?? "center";
     return (
         <View
@@ -29,6 +33,13 @@ const Header: React.FC<HeaderProps> = ({ title, align, children, style, ...rest 
             {...rest}>
             {/* Show title if provided; otherwise show a sensible default */}
             <AppText style={[styles.title, { textAlign: alignment }]}>{title ?? "Header"}</AppText>
+            {
+                rightAction && rightActionIcon &&(
+                    <IconButton
+                        iconName={rightActionIcon}
+                        onPress={rightAction}
+                        accessibilityLabel="Header action" />)
+            }
             {children}
         </View>
     );

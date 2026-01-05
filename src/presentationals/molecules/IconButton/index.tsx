@@ -1,7 +1,8 @@
 import React from 'react';
 import { StyleProp, ViewStyle } from 'react-native';
 import * as LucideIcons from 'lucide-react-native';
-import { LucideIcon } from 'lucide-react-native';
+// import { LucideIcon } from 'lucide-react-native';
+import {IconName} from '../../types';
 import AppPressable from '../../atoms/AppPressable';
 import { styles } from './styles';
 import { colors, typography } from '../../../theme';
@@ -36,9 +37,9 @@ import { colors, typography } from '../../../theme';
 // type IconName = "Menu" | "Settings" | "Search" | ... // Only valid icon names!
 
 // This helper type extracts all valid icon names from Lucide
-type IconName = {
-    [K in keyof typeof LucideIcons]:(typeof LucideIcons)[K] extends LucideIcon ? K : never;
-}[keyof typeof LucideIcons];
+// type IconName = {
+//     [K in keyof typeof LucideIcons]:(typeof LucideIcons)[K] extends LucideIcon ? K : never;
+// }[keyof typeof LucideIcons];
 
 export interface IconButtonProps {
     style?: StyleProp<ViewStyle>;
@@ -46,7 +47,7 @@ export interface IconButtonProps {
     size?: number;
     color?: string;
     strokeWidth?: number;
-    onPress: () => void;
+    onPress?: () => void;
     accessibilityLabel?: string;
 }
 
