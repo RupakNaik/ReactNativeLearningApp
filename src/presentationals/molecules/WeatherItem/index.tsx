@@ -31,7 +31,7 @@ const WeatherItem: React.FC<WeatherItemProps> = ({ onPress, style, city, tempera
                 <AppText style={styles.cityLabel}>{city}</AppText>
                 <View style={styles.rowRightContainer}>
                     <AppText style={styles.tAvg}>Average: {temperature.average} °C |</AppText>
-                    <AppText style={styles.humidityLabel}>{humidity}%</AppText>
+                    <AppText style={styles.humidityLabel}>Humidity: {humidity}%</AppText>
                 </View>
             </View>
 

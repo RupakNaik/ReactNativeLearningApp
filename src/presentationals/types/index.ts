@@ -1,9 +1,8 @@
 import * as LucideIcons from 'lucide-react-native';
-import { LucideIcon } from 'lucide-react-native';
 
-// This helper type extracts all valid icon names from Lucide
+// Extract valid icon names - components that are functions (React components)
 export type IconName = {
-    [K in keyof typeof LucideIcons]: (typeof LucideIcons)[K] extends LucideIcon ? K : never;
+    [K in keyof typeof LucideIcons]: (typeof LucideIcons)[K] extends React.ComponentType<unknown> ? K : never;
 }[keyof typeof LucideIcons];
 
 export type AlignmentType = "left" | "center" | "right";

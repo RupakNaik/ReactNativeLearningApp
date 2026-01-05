@@ -24,7 +24,7 @@ const ScreenLayout: React.FC<ScreenLayoutProps> = ({ title, align, rightAction, 
                 rightActionIcon={rightActionIcon} />
             {children}
         </SafeAreaView>
-    )
+    );
 };
 
 export default ScreenLayout;

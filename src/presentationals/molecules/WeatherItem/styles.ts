@@ -25,7 +25,7 @@ export const styles = StyleSheet.create({
         color: colors.textPrimary
     },
     humidityLabel: {
-        fontSize: typography.fontSizes.lg,
+        fontSize: typography.fontSizes.md,
         color: colors.textPrimary
     },
     rowRightContainer: {
@@ -38,7 +38,7 @@ export const styles = StyleSheet.create({
     tAvg: {
         color: colors.neutral,
         fontWeight: typography.fontWeight.bold,
-        fontSize: typography.fontSizes.xl,
+        fontSize: typography.fontSizes.md,
     },
     tLow: {
         color: colors.primary

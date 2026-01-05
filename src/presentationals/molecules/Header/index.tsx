@@ -6,15 +6,12 @@ import { styles } from "./styles";
 import AppText from "../../atoms/AppText";
 import IconButton from "../IconButton";
 import { AlignmentType, IconName } from "../../types";
+import{colors}from '../../../theme'
 
 export interface HeaderProps extends ViewProps {
-    /** The primary text to show in the header */
     title?: string;
-    /** Optional content to render on the right or below (icons, actions, etc.) */
     children?: React.ReactNode;
-    /** Optional container style overrides */
     style?: StyleProp<ViewStyle>;
-    /** Optional alignment */
     align?: AlignmentType;
     rightAction?: () => void;
     rightActionIcon?: IconName;
@@ -24,22 +21,28 @@ const Header: React.FC<HeaderProps> = ({ title, align, children, rightAction, ri
     const alignment = align ?? "center";
     return (
         <View
-            style={[
-                styles.default,
-                style,
-                {
-                    justifyContent: alignment === "center" ? "center" : "space-between"
-                }]}
+            style={[styles.default, style]}
             {...rest}>
-            {/* Show title if provided; otherwise show a sensible default */}
-            <AppText style={[styles.title, { textAlign: alignment }]}>{title ?? "Header"}</AppText>
-            {
-                rightAction && rightActionIcon &&(
+            {/* Left spacer for centering */}
+            <View style={styles.sideContainer}>
+                {/* Left action can go here if needed */}
+            </View>
+            
+            {/* Title in center */}
+            <View style={styles.titleContainer}>
+                <AppText style={[styles.title, { textAlign: alignment }]}>{title ?? "Header"}</AppText>
+            </View>
+            
+            {/* Right action */}
+            <View style={styles.sideContainer}>
+                {rightAction && rightActionIcon && (
                     <IconButton
                         iconName={rightActionIcon}
                         onPress={rightAction}
-                        accessibilityLabel="Header action" />)
-            }
+                        accessibilityLabel="Header action"
+                        color={colors.textPrimary} />
+                )}
+            </View>
             {children}
         </View>
     );

@@ -34,7 +34,8 @@ const HomeTemplate: React.FC<HomeTemplateProps> = ({
             title="Home"
             style={[styles.default, style]}
             rightAction={onOpenModal}
-            rightActionIcon="Settings"
+            rightActionIcon="EllipsisVertical"
+            align="center"
             {...rest}>
             {children}
             {viewType === "list" ? <WeatherList data={weatherData} /> : <WeatherGrid data={weatherData} />}

@@ -9,9 +9,11 @@ export const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: colors.border,
         marginBottom: spacing.sm,
+        flex:1
     },
     col: {
         flexDirection: 'column',
+        // gap:spacing.xs
     },
     cityLabel: {
         fontSize: typography.fontSizes.xl,
@@ -23,7 +25,7 @@ export const styles = StyleSheet.create({
         color: colors.textPrimary
     },
     humidityLabel: {
-        fontSize: typography.fontSizes.lg,
+        fontSize: typography.fontSizes.md,
         color: colors.textPrimary
     },
     rowBottomContainer: {
@@ -31,14 +33,16 @@ export const styles = StyleSheet.create({
         gap: spacing.sm,
     },
     tHigh: {
-        color: colors.danger
+        color: colors.danger,
+        fontSize:typography.fontSizes.sm
     },
     tAvg: {
         color: colors.neutral,
         fontWeight: typography.fontWeight.bold,
-        fontSize: typography.fontSizes.xl,
+        fontSize: typography.fontSizes.md,
     },
     tLow: {
-        color: colors.primary
+        color: colors.primary,
+        fontSize:typography.fontSizes.sm
     }
 })

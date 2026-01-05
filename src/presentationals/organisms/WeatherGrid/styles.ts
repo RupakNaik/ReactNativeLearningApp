@@ -6,5 +6,6 @@ export const styles = StyleSheet.create({
     row: {
         justifyContent: 'space-between',
         gap: spacing.sm,
+        padding:spacing.sm
     }
 })
