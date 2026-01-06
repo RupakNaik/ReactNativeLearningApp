@@ -6,7 +6,7 @@ import WeatherList from '../../organisms/WeatherList';
 import WeatherGrid from '../../organisms/WeatherGrid';
 import ViewToggleModal from '../../organisms/ViewToggleModal';
 import { styles } from './styles';
-import { weatherData, WeatherItemModel } from '../../../data/weatherData';
+import { WeatherItemModel } from '../../../data/weatherData';
 
 export interface HomeTemplateProps extends ViewProps {
     style?: StyleProp<ViewStyle>,
@@ -17,11 +17,13 @@ export interface HomeTemplateProps extends ViewProps {
     isModalVisible: boolean;
     onOpenModal: () => void;
     onCloseModal: () => void;
+    data: WeatherItemModel[];
 }
 
 const HomeTemplate: React.FC<HomeTemplateProps> = ({
     style,
     children,
+    data,
     _onPress,
     viewType,
     onSelectView,
@@ -38,7 +40,7 @@ const HomeTemplate: React.FC<HomeTemplateProps> = ({
             align="center"
             {...rest}>
             {children}
-            {viewType === "list" ? <WeatherList data={weatherData} onItemPress={_onPress}/> : <WeatherGrid data={weatherData} onItemPress={_onPress}/>}
+            {viewType === "list" ? <WeatherList data={data} onItemPress={_onPress}/> : <WeatherGrid data={data} onItemPress={_onPress}/>}
             <ViewToggleModal
                 visible={isModalVisible}
                 selectView={viewType}
