@@ -15,7 +15,7 @@ const RadioButton: React.FC<RadioButtonProps> = ({
     size = typography.fontSizes.xl,
     ...rest
 }) => {
-    const dotSize = size - 4; // inner dot
+    const dotSize = size - 8; // inner dot
     const activeColor = colors.primary;
     const inactiveBorder = colors.border;
 
@@ -24,27 +24,19 @@ const RadioButton: React.FC<RadioButtonProps> = ({
             style={[
                 style,
                 styles.default,
+                { width: size, height: size, borderRadius: size / 2, borderWidth: 2, borderColor: selected ? activeColor : inactiveBorder }
             ]}
             {...rest}>
-            <View
-                style={{
-                    width: size,
-                    height: size,
-                    borderRadius: size / 2,
-                    borderWidth: 2,
-                    borderColor: selected ? activeColor : inactiveBorder,
-                }}>
-                {selected && (
-                    <View
-                        style={{
-                            width: dotSize,
-                            height: dotSize,
-                            borderRadius: dotSize / 2,
-                            backgroundColor: activeColor,
-                        }}
-                    />
-                )}
-            </View>
+            {selected && (
+                <View
+                    style={{
+                        width: dotSize,
+                        height: dotSize,
+                        borderRadius: dotSize / 2,
+                        backgroundColor: activeColor,
+                    }}
+                />
+            )}
         </View>
     )
 }
