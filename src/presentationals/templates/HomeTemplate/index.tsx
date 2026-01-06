@@ -1,17 +1,17 @@
 import React from 'react';
 import { ViewProps, ViewStyle, StyleProp } from 'react-native';
 
-import ScreenLayout from '../../presentationals/organisms/ScreenLayout';
-import WeatherList from '../../presentationals/organisms/WeatherList';
-import WeatherGrid from '../../presentationals/organisms/WeatherGrid';
-import ViewToggleModal from '../../presentationals/organisms/ViewToggleModal';
+import ScreenLayout from '../../organisms/ScreenLayout';
+import WeatherList from '../../organisms/WeatherList';
+import WeatherGrid from '../../organisms/WeatherGrid';
+import ViewToggleModal from '../../organisms/ViewToggleModal';
 import { styles } from './styles';
-import { weatherData } from '../../data/weatherData';
+import { weatherData, WeatherItemModel } from '../../../data/weatherData';
 
 export interface HomeTemplateProps extends ViewProps {
     style?: StyleProp<ViewStyle>,
     children?: React.ReactNode,
-    _onPress?: () => void;
+    _onPress?: (item: WeatherItemModel) => void;
     viewType: 'list' | 'grid';
     onSelectView: (view: 'list' | 'grid') => void;
     isModalVisible: boolean;
@@ -38,7 +38,7 @@ const HomeTemplate: React.FC<HomeTemplateProps> = ({
             align="center"
             {...rest}>
             {children}
-            {viewType === "list" ? <WeatherList data={weatherData} /> : <WeatherGrid data={weatherData} />}
+            {viewType === "list" ? <WeatherList data={weatherData} onItemPress={_onPress}/> : <WeatherGrid data={weatherData} onItemPress={_onPress}/>}
             <ViewToggleModal
                 visible={isModalVisible}
                 selectView={viewType}
