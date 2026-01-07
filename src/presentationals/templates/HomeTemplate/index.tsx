@@ -8,6 +8,8 @@ import ViewToggleModal from '../../organisms/ViewToggleModal';
 import { styles } from './styles';
 import { WeatherItemModel } from '../../../data/weatherData';
 
+import type { IconName } from '../../types';
+
 export interface HomeTemplateProps extends ViewProps {
     style?: StyleProp<ViewStyle>,
     children?: React.ReactNode,
@@ -36,11 +38,11 @@ const HomeTemplate: React.FC<HomeTemplateProps> = ({
             title="Home"
             style={[styles.default, style]}
             rightAction={onOpenModal}
-            rightActionIcon="EllipsisVertical"
+            rightActionIcon= {"EllipsisVertical" as IconName}
             align="center"
             {...rest}>
             {children}
-            {viewType === "list" ? <WeatherList data={data} onItemPress={_onPress}/> : <WeatherGrid data={data} onItemPress={_onPress}/>}
+            {viewType === "list" ? <WeatherList data={data} onItemPress={_onPress} /> : <WeatherGrid data={data} onItemPress={_onPress} />}
             <ViewToggleModal
                 visible={isModalVisible}
                 selectView={viewType}
