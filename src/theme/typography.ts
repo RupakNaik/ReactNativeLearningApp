@@ -3,13 +3,23 @@ export const typography = {
     sm: 12,
     md: 14,
     lg: 18,
-    xl: 22
+    xl: 22,
+    xxl: 26,
+    xxxl: 32,
+    xxxxl: 40,
+    xxxxxl: 48
+
   },
   lineHeights: {
     sm: 16,
     md: 20,
     lg: 24,
-    xl: 28
+    xl: 28,
+    tight: 1.1,
+    snug: 1.25,
+    normal: 1.4,
+    relaxed: 1.6,
+
   },
   fontWeight: {
     thin: 100,
@@ -28,7 +38,7 @@ export const typography = {
 };
 
 export type FontWeight = {
-  [key: string]:  'normal'
+  [key: string]: 'normal'
   | 'bold'
   | '100'
   | '200'
