@@ -19,4 +19,7 @@ export const styles = StyleSheet.create({
     buttonLabel: {
         color: colors.background
     },
+    weatherItem:{
+        margin: spacing.md
+    }
 });

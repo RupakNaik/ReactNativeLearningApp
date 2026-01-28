@@ -7,14 +7,14 @@ import AppText from "../../atoms/AppText";
 
 export interface WeatherGridItemProps {
     style?: StyleProp<ViewStyle>;
-    city: string;
-    temperature: {
-        high: number;
-        average: number;
-        low: number;
+    city?: string;
+    temperature?: {
+        high?: number;
+        average?: number;
+        low?: number;
     };
-    condition: string;
-    humidity: number;
+    condition?: string;
+    humidity?: number;
     onPress?: () => void;
 }
 

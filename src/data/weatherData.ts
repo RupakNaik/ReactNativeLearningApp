@@ -10,7 +10,110 @@ export type WeatherItemModel = {
     humidity: number;
 }
 
-export const weatherData : WeatherItemModel[] =[
+export const heavyWeatherItem = {
+    id: 'weather-heavy-001',
+    city: 'Mumbai',
+    country: 'India',
+    condition: 'Sunny',
+    coordinates: {
+        lat: 19.076,
+        lon: 72.8777,
+    },
+
+    temperature: {
+        current: 32,
+        feelsLike: 36,
+        day: {
+            high: 34,
+            average: 32,
+            low: 29,
+        },
+        hourly: Array.from({ length: 48 }, (_, i) => ({
+            hour: i,
+            temp: 28 + (i % 6),
+            feelsLike: 30 + (i % 6),
+        })),
+    },
+
+    humidity: {
+        current: 65,
+        hourly: Array.from({ length: 48 }, (_, i) => ({
+            hour: i,
+            value: 55 + (i % 20),
+        })),
+    },
+
+    wind: {
+        speed: 14,
+        direction: 'SW',
+        hourly: Array.from({ length: 48 }, (_, i) => ({
+            hour: i,
+            speed: 10 + (i % 8),
+            gust: 15 + (i % 10),
+        })),
+    },
+
+    precipitation: {
+        chance: 40,
+        hourly: Array.from({ length: 48 }, (_, i) => ({
+            hour: i,
+            chance: i % 3 === 0 ? 60 : 20,
+            amount: i % 5 === 0 ? 3.2 : 0,
+        })),
+    },
+
+    airQuality: {
+        index: 156,
+        category: 'Unhealthy',
+        pollutants: {
+            pm10: 142,
+            pm25: 88,
+            no2: 54,
+            so2: 12,
+            o3: 66,
+        },
+        hourlyForecast: Array.from({ length: 48 }, (_, i) => ({
+            hour: i,
+            index: 120 + (i % 40),
+            category: 'Moderate',
+        })),
+    },
+
+    forecasts: {
+        daily: Array.from({ length: 14 }, (_, i) => ({
+            day: `Day ${i + 1}`,
+            temperature: {
+                high: 30 + (i % 5),
+                low: 24 + (i % 4),
+            },
+            condition: 'Partly Cloudy',
+            humidity: 60 + (i % 10),
+            windSpeed: 12 + (i % 6),
+        })),
+    },
+
+    alerts: Array.from({ length: 5 }, (_, i) => ({
+        id: `alert-${i}`,
+        title: 'Heavy Rain Warning',
+        description:
+            'This is a detailed weather alert message explaining the severity, expected impact, safety precautions, evacuation suggestions, and emergency contact instructions. '.repeat(
+                10
+            ),
+        severity: 'High',
+        issuedAt: new Date().toISOString(),
+    })),
+
+    metadata: {
+        source: 'Simulated Weather Engine v1.0',
+        fetchedAt: new Date().toISOString(),
+        notes:
+            'This payload is intentionally large to simulate real-world API overfetching and demonstrate navigation performance issues in React Native applications. '.repeat(
+                20
+            ),
+    },
+};
+
+export const weatherData: WeatherItemModel[] = [
     {
         id: '1',
         city: 'Mumbai',

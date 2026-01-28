@@ -5,6 +5,7 @@ import DetailsTemplate from '../../presentationals/templates/DetailsTemplate';
 import { styles } from './styles';
 import { useDetail } from './hooks';
 
+
 export interface DetailsScreenProps extends ViewProps {
     children?: React.ReactNode;
     style?: StyleProp<ViewStyle>
@@ -18,6 +19,7 @@ const DetailsScreen: React.FC<DetailsScreenProps> = ({ children, style, ...rest 
         <DetailsTemplate
             style={[styles.default, style]}
             title={title}
+            weatherItem={weatherItem}
             onBack={onBack}
             {...rest}>
             {children}

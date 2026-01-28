@@ -1,9 +1,10 @@
 import React from 'react';
-import { ViewStyle, StyleProp, FlatList } from 'react-native';
+import { ViewStyle, StyleProp, FlatList, ActivityIndicator } from 'react-native';
 
 import { WeatherItemModel } from '../../../data/weatherData';
 import { styles } from './styles';
 import WeatherItem from '../../molecules/WeatherItem';
+import { useSelector } from 'react-redux';
 
 export interface WeatherListProps {
     style?: StyleProp<ViewStyle>;
@@ -12,6 +13,9 @@ export interface WeatherListProps {
 }
 
 const WeatherList: React.FC<WeatherListProps> = ({ data, style, onItemPress, }) => {
+
+    const loading = useSelector(state => state?.weatherList?.loading)
+
     return (
         <FlatList
             data={data}
@@ -26,7 +30,9 @@ const WeatherList: React.FC<WeatherListProps> = ({ data, style, onItemPress, }) 
             keyExtractor={item => item.id}
             contentContainerStyle={styles.listContent}
             showsVerticalScrollIndicator={false}
-            style={style} />
+            style={style} 
+            ListEmptyComponent={loading ? <ActivityIndicator size={'large'}/> : null}
+        />
     );
 }
 

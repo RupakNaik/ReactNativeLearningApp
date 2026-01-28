@@ -1,5 +1,5 @@
 import React from 'react';
-import { ViewProps, ViewStyle, StyleProp } from 'react-native';
+import { ViewProps, ViewStyle, StyleProp, View } from 'react-native';
 
 import HomeTemplate from '../../presentationals/templates/HomeTemplate';
 import { styles } from './styles';
@@ -23,7 +23,8 @@ const HomeScreen: React.FC<HomeScreenProps> = ({
         selectView,
         openModal,
         closeModal,
-        onWeatherItemPress } = useHomeDetails();
+        onWeatherItemPress
+    } = useHomeDetails();
 
     return (
         <HomeTemplate
