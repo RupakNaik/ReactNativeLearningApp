@@ -6,5 +6,6 @@ import { WeatherItemModel } from "../data/weatherData";
  */
 export type RootStackParamList = {
     Home: undefined;
-    Details: {item: WeatherItemModel};
+    // Details: {item: WeatherItemModel};
+    Details: {weatherId: string|number|null};
 }

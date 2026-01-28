@@ -12,7 +12,7 @@ import { useEffect } from "react";
 import { AppDispatch, RootState } from "../../../store";
 
 // import {increment} from '../../../store/counter/counterSlice';
-import {requestDailyWeatherReport, responseDailyWeatherReport} from '../../../store/weatherList/weatherListSlice';
+import {fetchWeatherData, requestDailyWeatherReport, responseDailyWeatherReport, selectWeatherItem} from '../../../store/weatherList/weatherListSlice';
 
 type Nav = NativeStackNavigationProp<RootStackParamList, 'Home'>;
 
@@ -29,19 +29,20 @@ export const useHomeDetails = () => {
     // const count = useSelector((state: RootState)=>state.counter.value);
 
     useEffect(() => {
-        dispatch(requestDailyWeatherReport())
+        dispatch(fetchWeatherData())
     }, [dispatch]);
 
-    useEffect(() => {
-        if(loading) {
-            setTimeout(() => {
-                dispatch(responseDailyWeatherReport(weatherData));
-            }, 2000);
-        }
-    }, [loading, dispatch, weatherData]);
+    // useEffect(() => {
+    //     if(loading) {
+    //         setTimeout(() => {
+    //             dispatch(responseDailyWeatherReport(weatherData));
+    //         }, 2000);
+    //     }
+    // }, [loading, dispatch, weatherData]);
 
     const onWeatherItemPress = (item: WeatherItemModel) => {
-        navigation.navigate('Details', { item });
+        dispatch(selectWeatherItem(item.id)); //store id in redux
+        navigation.navigate('Details', { weatherId: item.id }); // navigate with id only
     }
     
     // const onIncrementPress = () => {
